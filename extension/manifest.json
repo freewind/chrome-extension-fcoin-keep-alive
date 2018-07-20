@@ -1,15 +1,23 @@
 {
   "manifest_version": 2,
-
-  "name": "Get url of current tag",
-  "description": "This extension will alert the url of current tag",
+  "name": "fcoin-keep-alive",
+  "description": "fcoin-keep-alive",
   "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "hello.html"
-  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.fcoin.com/*"
+      ],
+      "js": [
+        "bundle.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "bundle.js"
+  ],
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "*://*.fcoin.com/*"
   ]
 }
