@@ -38053,17 +38053,20 @@ this['chrome-extension-fcoin-keep-alive'] = function (_, Kotlin, $module$kotlin_
     return Unit;
   }
   var Any = Object;
-  function keepAlive$lambda() {
-    console.log('Visit https://exchange.fcoin.com/finance/main in background repeat to keep alive');
-    var tmp$ = window;
-    var tmp$_0;
-    var $receiver = (tmp$_0 = {}) == null || Kotlin.isType(tmp$_0, Any) ? tmp$_0 : throwCCE();
-    $receiver.credentials = 'include';
-    return tmp$.fetch('url', $receiver).then(keepAlive$lambda$lambda);
+  function keepAlive$lambda(closure$url) {
+    return function () {
+      console.log('Visit https://exchange.fcoin.com/finance/main in background repeat to keep alive');
+      var tmp$ = window;
+      var tmp$_0 = closure$url;
+      var tmp$_1;
+      var $receiver = (tmp$_1 = {}) == null || Kotlin.isType(tmp$_1, Any) ? tmp$_1 : throwCCE();
+      $receiver.credentials = 'include';
+      return tmp$.fetch(tmp$_0, $receiver).then(keepAlive$lambda$lambda);
+    };
   }
   function keepAlive() {
     var url = 'https://exchange.fcoin.com/finance/main';
-    window.setInterval(keepAlive$lambda, 15000);
+    window.setInterval(keepAlive$lambda(url), 15000);
   }
   function isChromeApiAvailable() {
     var tmp$, tmp$_0;

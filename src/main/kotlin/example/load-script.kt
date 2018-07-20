@@ -21,7 +21,7 @@ fun keepAlive() {
     val url = "https://exchange.fcoin.com/finance/main"
     window.setInterval({
         console.log("Visit $url in background repeat to keep alive")
-        window.fetch("url", jsonAs<RequestInit>().apply {
+        window.fetch(url, jsonAs<RequestInit>().apply {
             this.credentials = RequestCredentials.INCLUDE
         }).then { response ->
             println("""status code: ${response.status}""")
